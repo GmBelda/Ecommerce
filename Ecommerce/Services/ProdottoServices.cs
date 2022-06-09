@@ -77,7 +77,7 @@ namespace Ecommerce.Services
             AppleShirt.Id = 3;
             AppleShirt.Codice = "45455445454";
             AppleShirt.Nome = "Maglietta Apple";
-            AppleShirt.DescBreve = "Apple-T shirt, negozio, iPad, iPhone, correggere, Mac, divertente, fresco, qualità, di Consulenza";
+            AppleShirt.DescBreve = "Apple-T shirt, realizzato con 70% cotone e 30% Satin";
             AppleShirt.Descrizione = "La maglietta, t - shirt o semplicemente tee è un capo di abbigliamento di stoffa, senza bottoni e senza colletto, che ricopre il torso di chi la indossa.Può essere confezionata a maniche lunghe o a maniche corte, in tessuti naturali come il cotone, od in fibre sintetiche.";
             AppleShirt.Peso = 150;
             AppleShirt.Prezzo = 34.99m;
