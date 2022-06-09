@@ -31,5 +31,10 @@ namespace Ecommerce.Controllers
             ViewBag.Immagini = immagini;
             return View("View", prodotto);
         }
+
+        public IActionResult AddToCart(int id)
+        {
+
+        }
     }
 }
