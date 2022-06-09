@@ -42,9 +42,9 @@
 							}
 							@if (count == 0)
 							{
-								<div style="">
-									<img src="/placeholder.png" class="img-fluid">
-								</div>
+					
+									<img src="/placeholder.png" class="img-fluid" style="max-height:486px">
+							
 							}
 							<div class="card-body">
 								<h5>@item.Nome</h5>
@@ -54,7 +54,7 @@
 										<button type="button" class="btn btn-sm btn-outline-secondary">View</button>
 										<button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
 									</div>
-									<small class="text-muted">&euro;@Math.Round(@item.Prezzo,2)</small>
+									<small class="text-success">&euro;@Math.Round(@item.Prezzo,2)</small>
 								</div>
 							</div>
 						</div>
