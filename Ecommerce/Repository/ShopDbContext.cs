@@ -20,6 +20,7 @@ namespace Ecommerce.Repository
         public virtual DbSet<Categorium> Categoria { get; set; } = null!;
         public virtual DbSet<Cliente> Clientes { get; set; } = null!;
         public virtual DbSet<Corriere> Corrieres { get; set; } = null!;
+        public virtual DbSet<Immagine> Immagines { get; set; } = null!;
         public virtual DbSet<ListaProdotti> ListaProdottis { get; set; } = null!;
         public virtual DbSet<Magazzino> Magazzinos { get; set; } = null!;
         public virtual DbSet<Ordine> Ordines { get; set; } = null!;
@@ -117,6 +118,27 @@ namespace Ecommerce.Repository
                     .HasMaxLength(100)
                     .IsUnicode(false)
                     .HasColumnName("nome");
+            });
+
+            modelBuilder.Entity<Immagine>(entity =>
+            {
+                entity.ToTable("Immagine");
+
+                entity.Property(e => e.Id)
+                    .ValueGeneratedNever()
+                    .HasColumnName("id");
+
+                entity.Property(e => e.IdProdotto).HasColumnName("id_prodotto");
+
+                entity.Property(e => e.Link)
+                    .HasMaxLength(255)
+                    .IsUnicode(false)
+                    .HasColumnName("link");
+
+                entity.HasOne(d => d.IdProdottoNavigation)
+                    .WithMany(p => p.Immagines)
+                    .HasForeignKey(d => d.IdProdotto)
+                    .HasConstraintName("FK__Immagine__id_pro__5812160E");
             });
 
             modelBuilder.Entity<ListaProdotti>(entity =>

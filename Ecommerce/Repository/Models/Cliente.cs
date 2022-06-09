@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
+
 namespace Ecommerce.Repository.Models
 {
     public partial class Cliente
@@ -12,7 +12,6 @@ namespace Ecommerce.Repository.Models
         }
 
         public int Id { get; set; }
-        [Required]
         public string Username { get; set; } = null!;
         public string Password { get; set; } = null!;
         public string Email { get; set; } = null!;

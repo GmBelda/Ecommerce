@@ -7,6 +7,7 @@ namespace Ecommerce.Repository.Models
     {
         public Prodotto()
         {
+            Immagines = new HashSet<Immagine>();
             Scorta = new HashSet<Scortum>();
         }
 
@@ -20,6 +21,7 @@ namespace Ecommerce.Repository.Models
         public int? IdCategoria { get; set; }
 
         public virtual Categorium? IdCategoriaNavigation { get; set; }
+        public virtual ICollection<Immagine> Immagines { get; set; }
         public virtual ICollection<Scortum> Scorta { get; set; }
     }
 }

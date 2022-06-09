@@ -11,12 +11,14 @@ namespace Ecommerce.Controllers
         private readonly ILogger<HomeController> _logger;
         private readonly CategoriaServices _categoriaServices;
         private readonly ProdottoServices _prodottoServices;
+        private readonly ImmagineServices _immagineServices;
 
-        public HomeController(ILogger<HomeController> logger, CategoriaServices categoriaServices,ProdottoServices prodottoServices)
+        public HomeController(ILogger<HomeController> logger, CategoriaServices categoriaServices,ProdottoServices prodottoServices,ImmagineServices immagineServices)
         {
             _logger = logger;
             _categoriaServices = categoriaServices;
             _prodottoServices = prodottoServices;
+            _immagineServices = immagineServices;
         }
 
         public IActionResult Index()
@@ -25,6 +27,8 @@ namespace Ecommerce.Controllers
             if (categorie.Count() == 0)
             {
                 _categoriaServices.PopolaCategoria();
+                _prodottoServices.PopolaProdotto();
+                _immagineServices.UploadImg();
             }
             return View();
         }
