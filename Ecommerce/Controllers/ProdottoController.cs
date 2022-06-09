@@ -24,5 +24,12 @@ namespace Ecommerce.Controllers
             return View(_prodottoServices.GetProdottos());
         }
 
+        public async Task<IActionResult> GetProdotto(int id)
+        {
+            Prodotto prodotto = _prodottoServices.GetProdotto(id);
+            List<Immagine> immagini = _immagineServices.GetImgs().Where(x => x.IdProdotto == id).ToList();
+            ViewBag.Immagini = immagini;
+            return View("View", prodotto);
+        }
     }
 }

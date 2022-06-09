@@ -54,7 +54,7 @@
 								<p class="card-text">@item.DescBreve</p>
 								<div class="d-flex justify-content-between align-items-center">
 									<div class="btn-group">
-										<a asp-controller="Home" asp-action="Index" type="button" class="btn btn-sm btn-primary rounded-pill">Acquista ora</a>
+										<a asp-controller="Prodotto" asp-action="GetProdotto" asp-route-id="@item.Id" type="button" class="btn btn-sm btn-primary rounded-pill">Acquista ora</a>
 									</div>
 									<h6 class="mb-0 text-success">&euro;@Math.Round(@item.Prezzo,2)</h6>
 									@foreach (var categoria in @categorie)

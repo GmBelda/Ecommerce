@@ -32,8 +32,14 @@ namespace Ecommerce.Services
             IphoneImg2.IdProdotto = 1;
             _dbContext.Immagines.Add(IphoneImg2);
             _dbContext.SaveChanges();
+            Immagine IphoneImg3 = new Immagine();
+            IphoneImg2.Id = 3;
+            IphoneImg2.Link = "/img/iphone3.png";
+            IphoneImg2.IdProdotto = 1;
+            _dbContext.Immagines.Add(IphoneImg2);
+            _dbContext.SaveChanges();
 
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < 3; i++)
             {
                 Immagine mela = new Immagine();
                 mela.Id = _dbContext.Immagines.Count()+1;
@@ -43,7 +49,7 @@ namespace Ecommerce.Services
                 _dbContext.SaveChanges();
             }
 
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < 3; i++)
             {
                 Immagine shirt = new Immagine();
                 shirt.Id = _dbContext.Immagines.Count() + 1;

@@ -18,6 +18,10 @@ namespace Ecommerce.Services
             return prodottos;
         }
 
+        public Prodotto? GetProdotto(int id)
+        {
+            return _dbContext.Prodottos.First(p => p.Id == id);
+        }
 
         public void CreaProdotto(Prodotto prodotto)
         {
@@ -33,6 +37,8 @@ namespace Ecommerce.Services
             _dbContext.Prodottos.Add(nuovoProdotto);
             _dbContext.SaveChanges();
         }
+
+
 
         public void PopolaProdotto()
         {
@@ -51,7 +57,6 @@ namespace Ecommerce.Services
             Iphone13.Prezzo = 1289;
             Iphone13.IdCategoria = 1;
             _dbContext.Add(Iphone13);
-            _dbContext.SaveChanges();
 
             Prodotto Apple = new Prodotto();
             Apple.Id = 2;
@@ -67,7 +72,6 @@ namespace Ecommerce.Services
             Apple.Prezzo = 1.90m;
             Apple.IdCategoria = 2;
             _dbContext.Add(Apple);
-            _dbContext.SaveChanges(); ;
 
             Prodotto AppleShirt = new Prodotto();
             AppleShirt.Id = 3;
@@ -79,7 +83,6 @@ namespace Ecommerce.Services
             AppleShirt.Prezzo = 34.99m;
             AppleShirt.IdCategoria = 3;
             _dbContext.Add(AppleShirt);
-            _dbContext.SaveChanges();
 
             Prodotto temp;
             int count = _dbContext.Prodottos.Count();
@@ -98,8 +101,8 @@ namespace Ecommerce.Services
                     temp.Codice = "ay37121ja" + id; 
                     _dbContext.Prodottos.Add(temp);
                 }
-                    _dbContext.SaveChanges();
             }
+                    _dbContext.SaveChanges();
         }
     }
 }
