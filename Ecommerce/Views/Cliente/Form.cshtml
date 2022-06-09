@@ -1,0 +1,41 @@
+﻿@model Ecommerce.Repository.Models.Cliente;
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@section page_css{
+<link rel="stylesheet" href="~/css/_form.css" asp-append-version="true" />
+}
+
+@{
+}
+<form asp-controller="Cliente" asp-action="CreaCliente" method="POST">
+	<div class="mb-3">
+		<label asp-for="Nome" class="form-label">Nome</label>
+		<input type="text" class="form-control" asp-for="Nome" required>
+		<span style="color:red" asp-validation-for="Nome"></span><br />
+	</div>
+	<div class="mb-3">
+		<label asp-for="Cognome" class="form-label">Cognome</label>
+		<input type="text" class="form-control" asp-for="Cognome" required>
+		<span style="color:red" asp-validation-for="Cognome"></span><br />
+	</div>
+	<div class="mb-3">
+		<label asp-for="Username" class="form-label">Username</label>
+		<input type="text" class="form-control" asp-for="Username">
+		<span style="color:red" asp-validation-for="Username"></span><br />
+	</div>
+	<div class="mb-3">
+		<label asp-for="Password" class="form-label">Password</label>
+		<input type="password" class="form-control" asp-for="Password" required>
+				<span style="color:red" asp-validation-for="Password"></span><br />
+	</div>
+	<div class="mb-3">
+		<label asp-for="Email" class="form-label">Email</label>
+		<input type="email" class="form-control" asp-for="Email" required>
+				<span style="color:red" asp-validation-for="Email"></span><br />
+	</div>
+	<div class="mb-3">
+		<label asp-for="NumeroTel" class="form-label">Numero di Telefono</label>
+		<input type="text" class="form-control" asp-for="NumeroTel" required>
+		<span style="color:red" asp-validation-for="NumeroTel"></span><br />
+	</div>
+	<button type="submit" class="btn btn-primary">Submit</button>
+</form>
