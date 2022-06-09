@@ -9,14 +9,17 @@ namespace Ecommerce.Controllers
     {
         private readonly ProdottoServices _prodottoServices;
         private readonly ImmagineServices _immagineServices;
+        private readonly CategoriaServices _categoriaServices;
 
-        public ProdottoController(ProdottoServices prodottoServices, ImmagineServices immagineServices)
+        public ProdottoController(ProdottoServices prodottoServices, ImmagineServices immagineServices,CategoriaServices categoriaServices)
         {
             _prodottoServices = prodottoServices;
             _immagineServices = immagineServices;
+            _categoriaServices = categoriaServices;
         }
         public IActionResult Index()
         {
+            ViewBag.Categoria = _categoriaServices.GetCategorie();
             ViewBag.Immagine = _immagineServices.GetImgs();
             return View(_prodottoServices.GetProdottos());
         }

@@ -32,6 +32,26 @@ namespace Ecommerce.Services
             IphoneImg2.IdProdotto = 1;
             _dbContext.Immagines.Add(IphoneImg2);
             _dbContext.SaveChanges();
+
+            for (int i = 0; i < 4; i++)
+            {
+                Immagine mela = new Immagine();
+                mela.Id = _dbContext.Immagines.Count()+1;
+                mela.Link = "/img/mela" + (i + 1) + ".png";
+                mela.IdProdotto = 2;
+                _dbContext.Immagines.Add(mela);
+                _dbContext.SaveChanges();
+            }
+
+            for (int i = 0; i < 4; i++)
+            {
+                Immagine shirt = new Immagine();
+                shirt.Id = _dbContext.Immagines.Count() + 1;
+                shirt.Link = "/img/shirt" + (i + 1) + ".png";
+                shirt.IdProdotto = 3;
+                _dbContext.Immagines.Add(shirt);
+                _dbContext.SaveChanges();
+            }
         }
 
     }

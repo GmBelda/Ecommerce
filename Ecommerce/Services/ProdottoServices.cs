@@ -18,6 +18,7 @@ namespace Ecommerce.Services
             return prodottos;
         }
 
+
         public void CreaProdotto(Prodotto prodotto)
         {
             var nuovoProdotto = new Prodotto();
@@ -36,6 +37,7 @@ namespace Ecommerce.Services
         public void PopolaProdotto()
         {
             Prodotto Iphone13 = new Prodotto();
+            Iphone13.Id = 1;
             Iphone13.Codice = "12121212121";
             Iphone13.Nome = "Iphone 13";
             Iphone13.DescBreve = "Smartphone Apple di ultima generazione";
@@ -48,20 +50,50 @@ namespace Ecommerce.Services
             Iphone13.Peso = 186;
             Iphone13.Prezzo = 1289;
             Iphone13.IdCategoria = 1;
-            CreaProdotto(Iphone13);
+            _dbContext.Add(Iphone13);
+            _dbContext.SaveChanges();
+
+            Prodotto Apple = new Prodotto();
+            Apple.Id = 2;
+            Apple.Codice = "32232323232";
+            Apple.Nome = "Fresh Apple";
+            Apple.DescBreve = "La frutta piu buona e raccomandata dai dottori!";
+            Apple.Descrizione = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, " +
+                "sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad " +
+                "minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea " +
+                "commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse " +
+                "cillum dolore eu fugiat nulla pariatur. ";
+            Apple.Peso = 10;
+            Apple.Prezzo = 1.90m;
+            Apple.IdCategoria = 2;
+            _dbContext.Add(Apple);
+            _dbContext.SaveChanges(); ;
+
+            Prodotto AppleShirt = new Prodotto();
+            AppleShirt.Id = 3;
+            AppleShirt.Codice = "45455445454";
+            AppleShirt.Nome = "Maglietta Apple";
+            AppleShirt.DescBreve = "Apple-T shirt, negozio, iPad, iPhone, correggere, Mac, divertente, fresco, qualità, di Consulenza";
+            AppleShirt.Descrizione = "La maglietta, t - shirt o semplicemente tee è un capo di abbigliamento di stoffa, senza bottoni e senza colletto, che ricopre il torso di chi la indossa.Può essere confezionata a maniche lunghe o a maniche corte, in tessuti naturali come il cotone, od in fibre sintetiche.";
+            AppleShirt.Peso = 150;
+            AppleShirt.Prezzo = 34.99m;
+            AppleShirt.IdCategoria = 3;
+            _dbContext.Add(AppleShirt);
+            _dbContext.SaveChanges();
 
             Prodotto temp;
-            int id = 2;
+            int count = _dbContext.Prodottos.Count();
+            int id = 4;
             for (int j = 1; j < 4; j++)
             {
-                for (int i = 2; i < 7; i++)
+                for (int i = count+1; i < count+3; i++)
                 {
                     temp = new Prodotto(); 
                     temp.Id = id++; 
-                    temp.Nome = "Oggetto id: " + i; 
-                    temp.DescBreve = "Descrizione oggetto id: " + i; 
-                    temp.Peso = i; 
-                    temp.Descrizione = "la mia descrizione è, id:" + i;
+                    temp.Nome = "Prodotto #" + id; 
+                    temp.DescBreve = "Descrizione del prodotto : " + id; 
+                    temp.Peso = id*3; 
+                    temp.Descrizione = "la mia descrizione è, id:" + id;
                     temp.IdCategoria = j; 
                     temp.Codice = "ay37121ja" + id; 
                     _dbContext.Prodottos.Add(temp);

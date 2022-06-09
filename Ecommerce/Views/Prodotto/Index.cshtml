@@ -2,6 +2,7 @@
 
 @model List<Ecommerce.Repository.Models.Prodotto>;
 @{
+	var categorie = ViewBag.Categoria as List<Categorium>;
 	var immagini = ViewBag.Immagine as List<Immagine>;
 	int count = 0;
 }
@@ -27,7 +28,7 @@
 				@foreach (var item in @Model)
 				{
 					<div class="col">
-						<div class="card shadow-sm">
+						<div class="card shadow-sm" style="height:647px">
 							@{
 								count = 0;
 							}
@@ -36,25 +37,34 @@
 								@if (@item.Id == @img.IdProdotto)
 								{
 									count++;
-									<img src="@img.Link" style="max-height:486px">
+									<div style="height:486px">
+										<img src="@img.Link" class="img-fluid">
+									</div>
 									break;
 								}
 							}
 							@if (count == 0)
 							{
-					
-									<img src="/placeholder.png" class="img-fluid" style="max-height:486px">
-							
+								<div class="d-flex justify-content-center">
+									<img src="/placeholder.png" class="img-fluid" style="height:486px">
+								</div>
 							}
 							<div class="card-body">
 								<h5>@item.Nome</h5>
 								<p class="card-text">@item.DescBreve</p>
 								<div class="d-flex justify-content-between align-items-center">
 									<div class="btn-group">
-										<button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-										<button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+										<a asp-controller="Home" asp-action="Index" type="button" class="btn btn-sm btn-primary rounded-pill">Acquista ora</a>
 									</div>
-									<small class="text-success">&euro;@Math.Round(@item.Prezzo,2)</small>
+									<h6 class="mb-0 text-success">&euro;@Math.Round(@item.Prezzo,2)</h6>
+									@foreach (var categoria in @categorie)
+									{
+										if(item.IdCategoria == categoria.Id)
+										{
+											<small class="text-mute">@categoria.Nome</small>
+											break;
+										}
+									}
 								</div>
 							</div>
 						</div>
