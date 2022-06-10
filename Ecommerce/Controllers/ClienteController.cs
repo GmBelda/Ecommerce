@@ -27,10 +27,11 @@ namespace Ecommerce.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult CreaCliente(Cliente cliente)
         {
+                ModelState.Remove("Id");
             if (ModelState.IsValid)
             {
                 _clienteServices.CreaCliente(cliente);
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction("Index","Prodotto");
             }
             return View("Form");
         }

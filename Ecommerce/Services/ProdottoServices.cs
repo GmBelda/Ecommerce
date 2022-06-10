@@ -32,7 +32,21 @@ namespace Ecommerce.Services
 
         }
 
-       
+        public List<Prodotto> RemoveFromCart(int id)
+        {
+            var item = _dbContext.Prodottos.Single(p=>p.Id==id);
+			foreach (var prod in carrello)
+			{
+                if(prod.Id == id)
+				{
+                    carrello.Remove(prod);
+                    break;
+				}
+			}
+            return carrello;
+
+        }
+
         public Prodotto? GetProdotto(int id)
         {
             return _dbContext.Prodottos.First(p => p.Id == id);

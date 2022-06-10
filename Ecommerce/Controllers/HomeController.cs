@@ -30,7 +30,7 @@ namespace Ecommerce.Controllers
                 _prodottoServices.PopolaProdotto();
                 _immagineServices.UploadImg();
             }
-            return View();
+            return RedirectToAction("Index","Prodotto");
         }
 
         public IActionResult Privacy()

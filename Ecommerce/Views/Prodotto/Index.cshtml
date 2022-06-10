@@ -15,7 +15,7 @@
 			</a>
 			@if (carrello.Count() != 0)
 			{
-				<sub class="rounded-circle bg-success" style="font-size:15px; padding:0px 7px; margin-left:-8px;"><small>@carrello.Count()</small></sub>
+				<sub class="rounded-circle bg-success text-light" style="font-size:15px; padding:0px 7px; margin-left:-8px;"><small>@carrello.Count()</small></sub>
 			}
 		</h2>
 	</div>
@@ -33,7 +33,7 @@
 			<div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3 ">
 				@foreach (var item in @Model)
 				{
-					<div class="col">
+					<div class="col card-shadow">
 						<div class="card shadow-sm" style="height:647px">
 							@{
 								count = 0;
