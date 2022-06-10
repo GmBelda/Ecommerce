@@ -7,9 +7,16 @@ namespace Ecommerce.Services
     {
         private readonly ShopDbContext _dbContext;
 
+        public static List<Prodotto> carrello = new List<Prodotto>();
+
         public ProdottoServices(ShopDbContext dbContext)
         {
             _dbContext = dbContext;
+        }
+
+        public List<Prodotto> GetCarrello()
+        {
+            return carrello;
         }
 
         public IEnumerable<Prodotto> GetProdottos()
@@ -18,6 +25,14 @@ namespace Ecommerce.Services
             return prodottos;
         }
 
+        public List<Prodotto> AddToCart(int id)
+        {
+            carrello.Add(_dbContext.Prodottos.First(p=>p.Id==id));
+            return carrello;
+
+        }
+
+       
         public Prodotto? GetProdotto(int id)
         {
             return _dbContext.Prodottos.First(p => p.Id == id);
@@ -38,7 +53,10 @@ namespace Ecommerce.Services
             _dbContext.SaveChanges();
         }
 
-
+        public void Empty()
+        {
+            carrello.Clear();
+        }
 
 
         public void PopolaProdotto()

@@ -12,10 +12,14 @@ namespace Ecommerce.Services
             _dbContext = dbContext;
         }
 
-        public IEnumerable<Cliente> GetClientes()
+        public Cliente GetCliente()
         {
-            List<Cliente> listaCliente = _dbContext.Clientes.ToList();
-            return listaCliente;
+            if (_dbContext.Clientes.Count()!=0)
+            {
+                Cliente cliente = _dbContext.Clientes.First();
+                return cliente;
+            }
+            return null;
         }
 
         public void CreaCliente(Cliente cliente)

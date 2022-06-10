@@ -10,15 +10,18 @@ namespace Ecommerce.Controllers
         private readonly ProdottoServices _prodottoServices;
         private readonly ImmagineServices _immagineServices;
         private readonly CategoriaServices _categoriaServices;
+        private readonly ClienteServices _clienteServices;
 
-        public ProdottoController(ProdottoServices prodottoServices, ImmagineServices immagineServices,CategoriaServices categoriaServices)
+        public ProdottoController(ProdottoServices prodottoServices, ImmagineServices immagineServices,CategoriaServices categoriaServices,ClienteServices clienteServices)
         {
             _prodottoServices = prodottoServices;
             _immagineServices = immagineServices;
             _categoriaServices = categoriaServices;
+            _clienteServices = clienteServices;
         }
         public IActionResult Index()
         {
+            ViewBag.Carrello = _prodottoServices.GetCarrello();
             ViewBag.Categoria = _categoriaServices.GetCategorie();
             ViewBag.Immagine = _immagineServices.GetImgs();
             return View(_prodottoServices.GetProdottos());
@@ -34,7 +37,26 @@ namespace Ecommerce.Controllers
 
         public IActionResult AddToCart(int id)
         {
+            List<Prodotto> carrello = _prodottoServices.AddToCart(id).ToList();
+            return RedirectToAction(nameof(Index),carrello);
+        }
 
+        public IActionResult Empty()
+        {
+            _prodottoServices.Empty();
+            return View(Index);
+        }
+
+        public IActionResult Checkout()
+        {
+            Cliente cliente = _clienteServices.GetCliente();
+            if (cliente!=null)
+            {
+                ViewBag.Carrello = _prodottoServices.GetCarrello();
+                ViewBag.Cliente = cliente;
+                return View();
+            }
+            return RedirectToAction("CreaCliente","Cliente");
         }
     }
 }

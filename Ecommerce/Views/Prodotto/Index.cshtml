@@ -2,28 +2,34 @@
 
 @model List<Ecommerce.Repository.Models.Prodotto>;
 @{
+	var carrello = ViewBag.Carrello as List<Prodotto>;
 	var categorie = ViewBag.Categoria as List<Categorium>;
 	var immagini = ViewBag.Immagine as List<Immagine>;
 	int count = 0;
 }
 <main>
-
-	<section class="py-5 text-center container">
+	<div class="text-end">
+		<h2>
+			<a class="text-dark" asp-controller="Prodotto" asp-action="Checkout">
+				<i class="fa-solid fa-basket-shopping"></i>
+			</a>
+			@if (carrello.Count() != 0)
+			{
+				<sub class="rounded-circle bg-success" style="font-size:15px; padding:0px 7px; margin-left:-8px;"><small>@carrello.Count()</small></sub>
+			}
+		</h2>
+	</div>
+	<section class="py-5 text-center container hero">
 		<div class="row py-lg-5">
 			<div class="col-lg-6 col-md-8 mx-auto">
 				<h1 class="fw-light">NTT DATA Excellence</h1>
-				<p class="lead text-muted">Something short and leading about the collection below—its contents, the creator, etc. Make it short and sweet, but not too short so folks don’t simply skip over it entirely.</p>
-				<p>
-					<a href="#" class="btn btn-primary my-2">Main call to action</a>
-					<a href="#" class="btn btn-secondary my-2">Secondary action</a>
-				</p>
+				<p class="lead text-muted">Benvenuti nel nostro Shop, Troverai i nostri prodotti qua sotto.</p>
 			</div>
 		</div>
 	</section>
 
 	<div class="album py-5 bg-light">
 		<div class="container">
-
 			<div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3 ">
 				@foreach (var item in @Model)
 				{
@@ -59,11 +65,12 @@
 									<h6 class="mb-0 text-success">&euro;@Math.Round(@item.Prezzo,2)</h6>
 									@foreach (var categoria in @categorie)
 									{
-										if(item.IdCategoria == categoria.Id)
+										if (item.IdCategoria == categoria.Id)
 										{
 											<small class="text-mute">@categoria.Nome</small>
 											break;
 										}
+
 									}
 								</div>
 							</div>
