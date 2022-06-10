@@ -8,11 +8,6 @@
 						group x by x.Id into g
 						let count = g.Count()
 						select new {Nome = g.First().Nome, Count = count, Id = g.First().Id, Prezzo = g.First().Prezzo};
-	//Dictionary<int, int> unique = new Dictionary<int, int>();
-	//foreach (var item in counter)
-	//{
-	//	unique.Add()
-	//}
 }
 <div class="container">
 	<div class="row g-5">
@@ -29,13 +24,7 @@
 						<div>
 							<h6 class="my-0">@item.Nome</h6>
 							<small class="text-muted">
-								@foreach (var n in count)
-								{
-									if (n)
-									{
-										
-									}
-								}
+								@item.Count
 							</small>
 						</div>
 						<div class="btn-group">
@@ -69,7 +58,7 @@
 					<input type="text" class="form-control" asp-for="NumeroTel" readonly value="@cliente.NumeroTel">
 					<span style="color:red" asp-validation-for="NumeroTel"></span><br />
 				</div>
-				<button type="submit" class="btn btn-primary">Submit</button>
+				<a asp-controller="Prodotto" asp-action="Success" type="submit" class="btn btn-primary">Paga</a>
 			</form>
 		</div>
 	</div>

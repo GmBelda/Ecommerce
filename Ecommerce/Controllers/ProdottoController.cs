@@ -56,7 +56,7 @@ namespace Ecommerce.Controllers
         public IActionResult Empty()
         {
             _prodottoServices.Empty();
-            return View(Index);
+            return View("Index");
         }
 
         public IActionResult Checkout()
@@ -70,5 +70,18 @@ namespace Ecommerce.Controllers
             }
             return RedirectToAction("CreaCliente","Cliente");
         }
+
+        public IActionResult Svuota()
+		{
+            _prodottoServices.Empty();
+            List<Prodotto> carrello = _prodottoServices.GetCarrello().ToList();
+            return RedirectToAction(nameof(Index), carrello);
+        }
+
+
+        public IActionResult Success()
+		{
+            return View();
+		}
     }
 }
