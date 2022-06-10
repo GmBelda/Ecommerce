@@ -8,16 +8,17 @@
 						group x by x.Id into g
 						let count = g.Count()
 						select new {Nome = g.First().Nome, Count = count, Id = g.First().Id, Prezzo = g.First().Prezzo};
+	
 }
 <div class="container">
 	<div class="row g-5">
 		<div class="col-md-5 col-lg-4 order-md-last">
 			<h4 class="d-flex justify-content-between align-items-center mb-3">
-				<span class="text-primary">Your cart</span>
-				<span class="badge bg-primary rounded-pill">3</span>
+				<span class="text-primary">Il tuo carrello</span>
+				<span class="badge bg-primary rounded-pill">@carrello.Count()</span>
 			</h4>
 			<ul class="list-group mb-3">
-				@foreach (var item in counter)
+				@foreach (var item in counter.OrderBy(x=>x.Nome))
 				{
 					
 					<li class="list-group-item d-flex justify-content-between lh-sm">
